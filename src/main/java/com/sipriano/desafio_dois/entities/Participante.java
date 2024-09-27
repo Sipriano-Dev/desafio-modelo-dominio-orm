@@ -1,10 +1,15 @@
 package com.sipriano.desafio_dois.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Participante {
 
     private Long id;
     private String nome;
     private String email;
+
+    private List<Atividade> atividades = new ArrayList<>();
 
     public Participante() {
     }
@@ -39,4 +44,7 @@ public class Participante {
         this.email = email;
     }
 
+    public List<Atividade> getAtividades() {
+        return atividades;
+    }
 }

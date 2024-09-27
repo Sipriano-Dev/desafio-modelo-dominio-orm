@@ -1,9 +1,14 @@
 package com.sipriano.desafio_dois.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Categoria {
 
     private Long id;
     private String descricao;
+
+    private List<Atividade> atividades = new ArrayList<>();
 
     public Categoria() {
     }
@@ -29,4 +34,7 @@ public class Categoria {
         this.descricao = descricao;
     }
 
+    public List<Atividade> getAtividades() {
+        return atividades;
+    }
 }
