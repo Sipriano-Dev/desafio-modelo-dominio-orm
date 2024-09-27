@@ -1,17 +1,35 @@
 package com.sipriano.desafio_dois.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Entity(name = "tb_atividade")
 public class Atividade {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+
+    @Column(columnDefinition = "TEXT")
     private String descricao;
     private Double preco;
 
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
-    private List<Participante> participantes = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "tb_atividade_participante",
+            joinColumns = @JoinColumn(name = "atividade_id"),
+            inverseJoinColumns = @JoinColumn(name = "participante_id"))
+    private Set<Participante> participantes = new HashSet<>();
+
+    @OneToMany(mappedBy = "atividade")
     private List<Bloco> blocos = new ArrayList<>();
 
     public Atividade() {
@@ -65,7 +83,7 @@ public class Atividade {
         this.categoria = categoria;
     }
 
-    public List<Participante> getParticipantes() {
+    public Set<Participante> getParticipantes() {
         return participantes;
     }
 

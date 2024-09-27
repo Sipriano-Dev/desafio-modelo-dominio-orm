@@ -1,15 +1,21 @@
 package com.sipriano.desafio_dois.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity(name = "tb_participante")
 public class Participante {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String email;
 
-    private List<Atividade> atividades = new ArrayList<>();
+    @ManyToMany(mappedBy = "participantes")
+    private Set<Atividade> atividades = new HashSet<>();
 
     public Participante() {
     }
@@ -44,7 +50,7 @@ public class Participante {
         this.email = email;
     }
 
-    public List<Atividade> getAtividades() {
+    public Set<Atividade> getAtividades() {
         return atividades;
     }
 }
