@@ -1,4 +1,4 @@
-package com.sipriano.desafio_dois.entities;
+package com.sipriano.desafio.entities;
 
 import jakarta.persistence.*;
 
@@ -21,21 +21,21 @@ public class Atividade {
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
+    private com.sipriano.desafio.entities.Categoria categoria;
 
     @ManyToMany
     @JoinTable(name = "tb_atividade_participante",
             joinColumns = @JoinColumn(name = "atividade_id"),
             inverseJoinColumns = @JoinColumn(name = "participante_id"))
-    private Set<Participante> participantes = new HashSet<>();
+    private Set<com.sipriano.desafio.entities.Participante> participantes = new HashSet<>();
 
     @OneToMany(mappedBy = "atividade")
-    private List<Bloco> blocos = new ArrayList<>();
+    private List<com.sipriano.desafio.entities.Bloco> blocos = new ArrayList<>();
 
     public Atividade() {
     }
 
-    public Atividade(Long id, String nome, String descricao, Double preco, Categoria categoria) {
+    public Atividade(Long id, String nome, String descricao, Double preco, com.sipriano.desafio.entities.Categoria categoria) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;

@@ -1,4 +1,4 @@
-package com.sipriano.desafio_dois.entities;
+package com.sipriano.desafio.entities;
 
 import jakarta.persistence.*;
 
