@@ -7,7 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Entity(name = "tb_atividade")
+@Entity
+@Table(name = "tb_atividade")
 public class Atividade {
 
     @Id
@@ -21,21 +22,21 @@ public class Atividade {
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
-    private com.sipriano.desafio.entities.Categoria categoria;
+    private Categoria categoria;
 
     @ManyToMany
     @JoinTable(name = "tb_atividade_participante",
             joinColumns = @JoinColumn(name = "atividade_id"),
             inverseJoinColumns = @JoinColumn(name = "participante_id"))
-    private Set<com.sipriano.desafio.entities.Participante> participantes = new HashSet<>();
+    private Set<Participante> participantes = new HashSet<>();
 
     @OneToMany(mappedBy = "atividade")
-    private List<com.sipriano.desafio.entities.Bloco> blocos = new ArrayList<>();
+    private List<Bloco> blocos = new ArrayList<>();
 
     public Atividade() {
     }
 
-    public Atividade(Long id, String nome, String descricao, Double preco, com.sipriano.desafio.entities.Categoria categoria) {
+    public Atividade(Long id, String nome, String descricao, Double preco, Categoria categoria) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;

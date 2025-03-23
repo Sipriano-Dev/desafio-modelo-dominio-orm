@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "tb_categoria")
+@Entity
+@Table(name = "tb_categoria")
 public class Categoria {
 
     @Id
